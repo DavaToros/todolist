@@ -1,21 +1,17 @@
 from pydantic import BaseModel
-from typing import Optional
 
 class TaskCreate(BaseModel):
     title: str
-    description: Optional[str] = None
+    description: str | None = None
 
 class TaskUpdate(BaseModel):
-    title: Optional[str] = None
-    description: Optional[str] = None
-    completed: Optional[bool] = None
+    title: str | None = None
+    description: str | None = None
+    completed: bool | None = None
 
 class TaskResponse(BaseModel):
     id: int
     title: str
-    description: Optional[str] = None
+    description: str | None = None
     completed: bool
     created_at: str
-
-    class Config:
-        from_attributes = True
